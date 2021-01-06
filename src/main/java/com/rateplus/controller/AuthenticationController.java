@@ -49,6 +49,7 @@ public class AuthenticationController {
         return new LoginResponse(jwt);
     }
 
+    
     // Api /api/random yêu cầu phải xác thực mới có thể request
     @GetMapping("/random")
     public RandomStuff randomStuff(){

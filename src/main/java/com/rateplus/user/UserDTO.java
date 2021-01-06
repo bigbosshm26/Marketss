@@ -1,4 +1,4 @@
-package com.rateplus.model;
+package com.rateplus.user;
 
 public class UserDTO {
 

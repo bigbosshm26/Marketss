@@ -9,8 +9,6 @@ import javax.validation.constraints.NotNull;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-import com.rateplus.model.UserDTO;
-
 @Entity(name="user")
 @Table
 public class User implements Serializable{

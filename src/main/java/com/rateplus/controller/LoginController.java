@@ -19,10 +19,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.rateplus.entity.DBSession;
-import com.rateplus.model.UserDTO;
 import com.rateplus.repository.DBSessionRepository;
 import com.rateplus.repository.UserRepository;
 import com.rateplus.user.User;
+import com.rateplus.user.UserDTO;
 
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
