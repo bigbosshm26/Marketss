@@ -3,16 +3,15 @@ package com.rateplus.controller;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.rateplus.entity.Service;
-import com.rateplus.entity.User;
 import com.rateplus.model.ServiceRegisterForm;
 import com.rateplus.repository.ServiceRepository;
 import com.rateplus.repository.UserRepository;
+import com.rateplus.user.User;
 
 
 @RestController
@@ -28,7 +27,7 @@ public class HelloController {
 	public User createUser(@RequestBody User user) {
 		
 		long id = (long)((Math.random())*100000000000000L);	
-		user.setId(String.valueOf(id));
+		user.setId(id);
 		userRepo.save(user);
 		return user;
 	}

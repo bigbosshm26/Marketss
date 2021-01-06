@@ -1,4 +1,4 @@
-package com.rateplus.service;
+package com.rateplus.jwt;
 
 import org.springframework.stereotype.Service;
 

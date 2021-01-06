@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 
-import com.rateplus.model.DBSession;
+import com.rateplus.entity.DBSession;
 import com.rateplus.repository.DBSessionRepository;
 import com.rateplus.repository.UserRepository;
 

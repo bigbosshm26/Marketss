@@ -24,7 +24,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		<h1>SignUp Form</h1>
 		<div class="main-agileinfo">
 			<div class="agileits-top">
-				<form th:object="${signupForm}" th:action="@{/signup}" method="post">
+				<form th:object="${userDTO}" th:action="@{/signup}" method="post">
 					<input th:field="*{lastName}" placeholder="Last Name" type="text" required="">
 					<input th:field="*{firstName}" placeholder="First Name" type="text" required="">
 					<input th:field="*{email}" placeholder="Email" class="mail" type="email" required="">
@@ -44,7 +44,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 					<input type="submit" value="SIGNUP">
 				</form>
-				<p>Don't have an Account? <a href="#"> Login Now!</a></p>
+				<p>Already have an Account? <a href="login"> Login Now!</a></p>
 			</div>
 		</div>
 		<!-- copyright -->

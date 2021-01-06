@@ -1,4 +1,4 @@
-package com.rateplus.model;
+package com.rateplus.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
