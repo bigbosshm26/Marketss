@@ -11,7 +11,9 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
+import com.rateplus.jwt.JwtAuthenticationFilter;
 import com.rateplus.service.UserService;
 
 @EnableWebSecurity
@@ -20,6 +22,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 
 	@Autowired
 	private UserService userService;
+	
+	@Bean
+    public JwtAuthenticationFilter jwtAuthenticationFilter() {
+        return new JwtAuthenticationFilter();
+    }
 	
 	@Bean
 	public PasswordEncoder passwordEncoder() {
@@ -39,18 +46,23 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
  
         // Sét đặt dịch vụ để tìm kiếm User trong Database.
         // Và sét đặt PasswordEncoder.
-        auth.userDetailsService(userService).passwordEncoder(passwordEncoder());
+        auth.userDetailsService(userService)
+        	.passwordEncoder(passwordEncoder());
     }
 	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.csrf().disable().authorizeRequests()
-			.antMatchers("/").permitAll() // Cho phép tất cả mọi người truy cập vào địa chỉ này
-			.antMatchers("/login").permitAll(); // Cho phép tất cả mọi người truy cập vào địa chỉ này
-//			.anyRequest().authenticated(); // Tất cả các request khác đều cần phải xác thực mới được truy cập
-//            .and()
-//			.logout() // Cho phép logout
-//			.permitAll();
+			.antMatchers("/", "/about.html", "/contact.html").permitAll() // Cho phép tất cả mọi người truy cập vào địa chỉ này
+			.antMatchers("/login").permitAll() // Cho phép tất cả mọi người truy cập vào địa chỉ này
+			.antMatchers("/api/login").permitAll()
+			.anyRequest().authenticated() // Tất cả các request khác đều cần phải xác thực mới được truy cập
+			.and()
+			.logout() // Cho phép logout
+			.permitAll()
+			;
+		
+		http.addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
 	}
 
 }

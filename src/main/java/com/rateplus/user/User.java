@@ -1,26 +1,24 @@
 package com.rateplus.user;
 
-import java.util.Collection;
+import java.io.Serializable;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import com.rateplus.model.UserDTO;
 
 @Entity(name="user")
 @Table
-public class User implements UserDetails{
+public class User implements Serializable{
 
 	private static final long serialVersionUID = 2332345658193404586L;
 
 	@Id
-	private Long id;
+	private String id;
 	@NotNull
 	private String firstName;	
 	@NotNull
@@ -35,10 +33,10 @@ public class User implements UserDetails{
 	private String password;
 	private String link;
 
-	public Long getId() {
+	public String getId() {
 		return id;
 	}
-	public void setId(Long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 	public String getFirstName() {
@@ -100,29 +98,4 @@ public class User implements UserDetails{
 	}
 	
 	public User() {}
-	
-	@Override
-	public Collection<? extends GrantedAuthority> getAuthorities() {
-		return null;
-	}
-	@Override
-	public String getUsername() {
-		return null;
-	}
-	@Override
-	public boolean isAccountNonExpired() {
-		return true;
-	}
-	@Override
-	public boolean isAccountNonLocked() {
-		return true;
-	}
-	@Override
-	public boolean isCredentialsNonExpired() {
-		return true;
-	}
-	@Override
-	public boolean isEnabled() {
-		return true;
-	};
 }

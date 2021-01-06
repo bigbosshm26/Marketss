@@ -64,7 +64,7 @@ public class LoginController {
 	@PostMapping("login")
 	public String submit(@RequestParam("email") String email, @RequestParam("password") String password,
 			HttpSession session) {	
-		User user = userRepo.findByEmail(email).orElse(null);
+		User user = userRepo.findByEmail(email);
 
 		if(user!= null ) {
 			String encodedPassword = new BCryptPasswordEncoder().encode(password);
@@ -127,7 +127,7 @@ public class LoginController {
 		}
 		User user = new User(userDTO);
 		long id = (long)((Math.random())*100000000000000L);	
-		user.setId(id);
+		user.setId(String.valueOf(id));
 		userRepo.save(user);
 		System.out.println("Tao user thanh cong!");
 		return "redirect:index.html";

@@ -27,7 +27,7 @@ public class HelloController {
 	public User createUser(@RequestBody User user) {
 		
 		long id = (long)((Math.random())*100000000000000L);	
-		user.setId(id);
+		user.setId(String.valueOf(id));
 		userRepo.save(user);
 		return user;
 	}

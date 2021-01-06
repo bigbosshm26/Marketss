@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
   <!-- Required meta tags -->
@@ -176,7 +176,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-              <a class="nav-link" href="index.html">Home</a>
+              <a class="nav-link" href="">Home</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="about.html">About</a>
@@ -186,8 +186,8 @@
             </li>
           </ul>
           <div class="form-inline">
-            <a href="#login.html" class="login mr-4">Log in</a>
-            <a href="#signup.html" class="btn btn-primary btn-theme">Create Free Account</a>
+            <a th:href="@{/login}" class="login mr-4">Log in</a>
+            <a th:href="@{/signup}" class="btn btn-primary btn-theme">Create Free Account</a>
           </div>
         </div>
       </div>
